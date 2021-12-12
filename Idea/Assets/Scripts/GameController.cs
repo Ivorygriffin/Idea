@@ -21,19 +21,29 @@ public class GameController : MonoBehaviour
     public float timePerCharacter;
     private float _timeRemaining;
 
+    //ints
+
     private int _scrambleMiniGameWinConvinced;
     private int _hallucinaitonGasMiniGameWinConvinced;
     private int _storyTellingMiniGameWinConvinced;
 
+    public int maxRound;
+    private int _currentRound;
 
 
     //bools
 
 
 
-    //UI text
+    //text
 
     public TMP_Text timerText;
+
+    public TMP_Text journalTextHGMiniGame;
+    public TMP_Text journalTextSTMiniGame;
+    public TMP_Text journalTextSMiniGame;
+
+
 
     //Scenes
     public string Lose;
@@ -43,6 +53,13 @@ public class GameController : MonoBehaviour
     //game objects 
     public GameObject pauseMenu;
     public GameObject journal;
+
+    //images
+
+    public Image journalCharacter1; 
+    public Image journalCharacter2; 
+    public Image journalCharacter3;
+
 
 
     void Start()
@@ -109,16 +126,11 @@ public class GameController : MonoBehaviour
 
         SetJournal();
 
-        //select model and play relevant animation 
-
-
-    }
-    public void SetJournal()//set values and text on journal in relation to selected character values
-    {
-
-
+        //Randomly select model and play relevant animation 
+        //pick corresponding journal character image 
 
     }
+
 
     public void HallucinationGasMiniGameSuccess()//will +or- a float in relation to max value of convinced 
     {
@@ -140,6 +152,8 @@ public class GameController : MonoBehaviour
         _currentSuspicion += 15;
     }
 
+
+    //timer
     public void TimerTextUpdate()
     {
         timerText.SetText(_timeRemaining.ToString("00"));
@@ -148,6 +162,67 @@ public class GameController : MonoBehaviour
     public void NewTimer()
     {
         _timeRemaining = timePerCharacter -= Time.deltaTime;
+    }
+
+    //journal stuff
+    public void SetJournal()//set values and text on journal in relation to selected character values
+    {
+        //Hallucination gas
+
+        if(_hallucinaitonGasMiniGameWinConvinced <= 5)
+        {
+            journalTextHGMiniGame.SetText("blah"); //make 3 variations one for less effective one for medium effective one for very effective
+
+        }
+        if ((_hallucinaitonGasMiniGameWinConvinced <= 10) && (_hallucinaitonGasMiniGameWinConvinced > 5))
+        {
+            journalTextHGMiniGame.SetText("blah");
+        }
+        if ((_hallucinaitonGasMiniGameWinConvinced <= 15) && (_hallucinaitonGasMiniGameWinConvinced > 10))
+        {
+            journalTextHGMiniGame.SetText("blah");
+        }
+
+        //Scramble
+
+        if(_scrambleMiniGameWinConvinced <= 5)
+        {
+            journalTextSMiniGame.SetText("blah");
+        }
+        if((_scrambleMiniGameWinConvinced <= 10)&&(_scrambleMiniGameWinConvinced > 5))
+        {
+            journalTextSMiniGame.SetText("blah");
+        }
+        if((_scrambleMiniGameWinConvinced <= 15)&&(_scrambleMiniGameWinConvinced > 10))
+        {
+            journalTextSMiniGame.SetText("blah");
+        }  
+        
+        //storyTelling
+        
+        if(_storyTellingMiniGameWinConvinced <= 5)
+        {
+            journalTextSTMiniGame.SetText("blah");
+        }
+        if((_storyTellingMiniGameWinConvinced <= 10)&&(_scrambleMiniGameWinConvinced > 5))
+        {
+            journalTextSTMiniGame.SetText("blah");
+        }
+        if((_storyTellingMiniGameWinConvinced <= 15)&&(_scrambleMiniGameWinConvinced > 10))
+        {
+            journalTextSTMiniGame.SetText("blah");
+        }
+        
+
+
+    }
+    public void OpenJournal()
+    {
+        journal.SetActive(true);
+    }
+    public void CloseJournal()
+    {
+        journal.SetActive(false);
     }
 
     //Scene Loader
