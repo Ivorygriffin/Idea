@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     private int _storyTellingMiniGameWinConvinced;
 
     public int maxRound;
-    private int _currentRound;
+    private int _currentRound = 0;
 
 
     //bools
@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         NewCharacter();
+        
     }
 
     void Update()
@@ -74,7 +75,19 @@ public class GameController : MonoBehaviour
         SetConvinced();
         SetSuspicion();
         PauseMenu();
+        CheckRound();
         
+    }
+    public void CheckRound()
+    {
+        if (_currentRound == maxRound)
+        {
+            EndLevel();
+        }
+    }
+    public void EndLevel()
+    {
+        WinScene();
     }
     public void SetConvinced() //to be used to check number the variables have changed to in update and change slider
     {
@@ -99,6 +112,8 @@ public class GameController : MonoBehaviour
     {
         SelectCharacter();
         NewTimer();
+        _currentRound += 1;
+        Debug.Log(_currentRound);
 
     }
     public void TimerComplete()//will check if failed to convince character or succeeded, call to update suspicion funciton call to new character function
@@ -171,46 +186,46 @@ public class GameController : MonoBehaviour
 
         if(_hallucinaitonGasMiniGameWinConvinced <= 5)
         {
-            journalTextHGMiniGame.SetText("blah"); //make 3 variations one for less effective one for medium effective one for very effective
+            journalTextHGMiniGame.SetText("HG <5"); //make 3 variations one for less effective one for medium effective one for very effective
 
         }
         if ((_hallucinaitonGasMiniGameWinConvinced <= 10) && (_hallucinaitonGasMiniGameWinConvinced > 5))
         {
-            journalTextHGMiniGame.SetText("blah");
+            journalTextHGMiniGame.SetText("HG <= 10 >5");
         }
         if ((_hallucinaitonGasMiniGameWinConvinced <= 15) && (_hallucinaitonGasMiniGameWinConvinced > 10))
         {
-            journalTextHGMiniGame.SetText("blah");
+            journalTextHGMiniGame.SetText("HG <=15 >10");
         }
 
         //Scramble
 
         if(_scrambleMiniGameWinConvinced <= 5)
         {
-            journalTextSMiniGame.SetText("blah");
+            journalTextSMiniGame.SetText("S <5");
         }
         if((_scrambleMiniGameWinConvinced <= 10)&&(_scrambleMiniGameWinConvinced > 5))
         {
-            journalTextSMiniGame.SetText("blah");
+            journalTextSMiniGame.SetText("S <= 10 > 5");
         }
         if((_scrambleMiniGameWinConvinced <= 15)&&(_scrambleMiniGameWinConvinced > 10))
         {
-            journalTextSMiniGame.SetText("blah");
+            journalTextSMiniGame.SetText("S <=15 > 10");
         }  
         
         //storyTelling
         
         if(_storyTellingMiniGameWinConvinced <= 5)
         {
-            journalTextSTMiniGame.SetText("blah");
+            journalTextSTMiniGame.SetText("ST <5");
         }
         if((_storyTellingMiniGameWinConvinced <= 10)&&(_scrambleMiniGameWinConvinced > 5))
         {
-            journalTextSTMiniGame.SetText("blah");
+            journalTextSTMiniGame.SetText("ST <=10 >5");
         }
         if((_storyTellingMiniGameWinConvinced <= 15)&&(_scrambleMiniGameWinConvinced > 10))
         {
-            journalTextSTMiniGame.SetText("blah");
+            journalTextSTMiniGame.SetText("ST <=15 >10");
         }
         
 
@@ -252,7 +267,13 @@ public class GameController : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             pauseMenu.SetActive(true);
+            Time.timeScale = 0;
         }
+    }
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
