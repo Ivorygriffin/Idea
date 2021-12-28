@@ -64,7 +64,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        NewCharacter();
+        StartGame();
+
         
     }
 
@@ -78,17 +79,20 @@ public class GameController : MonoBehaviour
         CheckRound();
         
     }
+    public void StartGame()
+    {
+        NewTimer();
+        SelectCharacter();
+        _currentRound += 1;
+    }
     public void CheckRound()
     {
         if (_currentRound == maxRound)
         {
-            EndLevel();
+            WinScene();
         }
     }
-    public void EndLevel()
-    {
-        WinScene();
-    }
+  
     public void SetConvinced() //to be used to check number the variables have changed to in update and change slider
     {
         convinced.value = _currentConvinced;
@@ -115,6 +119,7 @@ public class GameController : MonoBehaviour
         _currentRound += 1;
         Debug.Log(_currentRound);
 
+
     }
     public void TimerComplete()//will check if failed to convince character or succeeded, call to update suspicion funciton call to new character function
     {
@@ -133,7 +138,7 @@ public class GameController : MonoBehaviour
     }
   
 
-    public void SelectCharacter()//randomly select which characters will be appearing in the level and how many will be appearing
+    public void SelectCharacter()//randomly select which characters will be appearing in the level
     {
         _scrambleMiniGameWinConvinced = Random.Range(1, 15);
         _storyTellingMiniGameWinConvinced = Random.Range(1, 15);
@@ -162,7 +167,7 @@ public class GameController : MonoBehaviour
         _currentConvinced += _scrambleMiniGameWinConvinced;
         Debug.Log(_currentConvinced);
     }
-    public void MiniGameFail()//will + or - a float in relation to max value of suspicion 
+    public void MiniGameFail()//will + a float in relation to max value of suspicion 
     {
         _currentSuspicion += 15;
     }
@@ -172,11 +177,13 @@ public class GameController : MonoBehaviour
     public void TimerTextUpdate()
     {
         timerText.SetText(_timeRemaining.ToString("00"));
-        
+
     }
     public void NewTimer()
     {
-        _timeRemaining = timePerCharacter -= Time.deltaTime;
+        _timeRemaining = timePerCharacter;
+        _timeRemaining -= Time.deltaTime;
+            
     }
 
     //journal stuff

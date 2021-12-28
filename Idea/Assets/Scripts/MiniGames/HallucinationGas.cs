@@ -1,20 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HallucinationGas : MonoBehaviour
 {
 
     //bools
-    public bool selected;
+    private bool _selected;
 
     //GameObjects
 
     public GameObject hallucinationGasScreen;
 
+    //lists/arrays
+    private List<string> _currentIngredients;
+    public string[] ingredients;
+
+    // UI
+
+    public TMP_Text ingredientList;
+
+    //ints
+    public int numberOfIngredients;
+    private int _currentNumberOfIngredients = 0;
+
     void Start()
     {
-
+        GenerateRandomList();
     }
 
     void Update()
@@ -24,7 +37,21 @@ public class HallucinationGas : MonoBehaviour
 
     public void GenerateRandomList() //will select a number of items from the available options and place them in an order
     {
-
+        if(numberOfIngredients != _currentNumberOfIngredients)
+        {
+            var rand = new System.Random();
+            int index = rand.Next(ingredients.Length);
+            Debug.Log(string.Format("{0}", ingredients[index]));
+            _currentIngredients.Add(ingredients[index]);
+            _currentNumberOfIngredients += 1;
+            Debug.Log(_currentNumberOfIngredients);
+        }
+        if(numberOfIngredients == _currentNumberOfIngredients)
+        {
+            ShowList();
+            Debug.Log("showing list");
+        }
+        
     }
     public void SelectItem() // to be called on button click event checking if image clicked matches the correct next item in the list 
     {
@@ -32,9 +59,10 @@ public class HallucinationGas : MonoBehaviour
         //might end up being game objects rather than buttons 
 
     }
-    public void ShowList() // take generated list and show it on screend for a period of time
+    public void ShowList() // take generated list and show it on screen for a period of time
     {
-
+        ingredientList.text = string.Format("{0}", _currentIngredients);
+        Debug.Log(string.Format("{0}", _currentIngredients));
     }
 
     public void OnListComplete()
