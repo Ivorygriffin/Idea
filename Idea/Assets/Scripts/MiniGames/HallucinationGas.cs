@@ -8,10 +8,12 @@ public class HallucinationGas : MonoBehaviour
 
     //bools
     private bool _selected;
+    private bool _listShowing;
 
     //GameObjects
 
     public GameObject hallucinationGasScreen;
+    public GameObject listImage;
 
     //lists/arrays
     private List<string> _currentIngredients;
@@ -27,12 +29,13 @@ public class HallucinationGas : MonoBehaviour
 
     void Start()
     {
-        GenerateRandomList();
+       
     }
 
     void Update()
     {
-
+        GenerateRandomList();
+       
     }
 
     public void GenerateRandomList() //will select a number of items from the available options and place them in an order
@@ -42,14 +45,20 @@ public class HallucinationGas : MonoBehaviour
             var rand = new System.Random();
             int index = rand.Next(ingredients.Length);
             Debug.Log(string.Format("{0}", ingredients[index]));
-            _currentIngredients.Add(ingredients[index]);
+            //_currentIngredients.Add(string.Format("{0}", ingredients[index]));
             _currentNumberOfIngredients += 1;
             Debug.Log(_currentNumberOfIngredients);
         }
         if(numberOfIngredients == _currentNumberOfIngredients)
         {
+            _listShowing = true;
+            
+        }
+        if(_listShowing == true)
+        {
+            StartCoroutine(Wait());
+            _listShowing = false;
             ShowList();
-            Debug.Log("showing list");
         }
         
     }
@@ -63,6 +72,14 @@ public class HallucinationGas : MonoBehaviour
     {
         ingredientList.text = string.Format("{0}", _currentIngredients);
         Debug.Log(string.Format("{0}", _currentIngredients));
+        listImage.SetActive(true);
+        
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        listImage.SetActive(false);
+        _listShowing = false;
     }
 
     public void OnListComplete()

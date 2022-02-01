@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public float maxSuspicion;
 
     public float timePerCharacter;
-    private float _timeRemaining;
+    public float _timeRemaining;
 
     //ints
 
@@ -65,12 +65,12 @@ public class GameController : MonoBehaviour
     void Start()
     {
         StartGame();
-
-        
+        _timeRemaining = timePerCharacter;
     }
 
     void Update()
     {
+        StartTimer();
         CheckSuspicion();
         TimerTextUpdate();
         SetConvinced();
@@ -81,10 +81,11 @@ public class GameController : MonoBehaviour
     }
     public void StartGame()
     {
-        NewTimer();
+        
         SelectCharacter();
         _currentRound += 1;
     }
+
     public void CheckRound()
     {
         if (_currentRound == maxRound)
@@ -115,7 +116,7 @@ public class GameController : MonoBehaviour
     public void NewCharacter()//after timer reaches 0 this will get a new character to start in the scene and start new timer 
     {
         SelectCharacter();
-        NewTimer();
+        _timeRemaining = timePerCharacter;
         _currentRound += 1;
         Debug.Log(_currentRound);
 
@@ -134,6 +135,7 @@ public class GameController : MonoBehaviour
         if(_timeRemaining == 0)
         {
             TimerComplete();
+            NewCharacter();
         }
     }
   
@@ -179,12 +181,12 @@ public class GameController : MonoBehaviour
         timerText.SetText(_timeRemaining.ToString("00"));
 
     }
-    public void NewTimer()
+    public void StartTimer()
     {
-        _timeRemaining = timePerCharacter;
+        
         _timeRemaining -= Time.deltaTime;
-            
     }
+
 
     //journal stuff
     public void SetJournal()//set values and text on journal in relation to selected character values
