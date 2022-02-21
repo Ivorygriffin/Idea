@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class Scramble : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public string[] words;
     void Start()
     {
-        
+        Pickword();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    void Pickword()
+    {
+        //selectedWord =  //word from list 
+        //pick word from list
+        //after picking word
+        ScrambleWord();
+    }
+
+    void ScrambleWord()
+    {
+        //foreach(char letters in selectedWord)
+        {
+
+        }
+        //scramble selected word
+    }
+
+
 }

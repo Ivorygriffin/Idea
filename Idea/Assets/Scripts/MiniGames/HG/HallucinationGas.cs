@@ -7,7 +7,7 @@ public class HallucinationGas : MonoBehaviour
 {
 
     //bools
-    private bool _selected;
+   
     private bool _listShowing;
 
     //GameObjects
@@ -27,10 +27,8 @@ public class HallucinationGas : MonoBehaviour
     public int numberOfIngredients;
     private int _currentNumberOfIngredients = 0;
 
-    void Start()
-    {
-       
-    }
+    public List<string> ongoingList;
+
 
     void Update()
     {
@@ -44,8 +42,10 @@ public class HallucinationGas : MonoBehaviour
         {
             var rand = new System.Random();
             int index = rand.Next(ingredients.Length);
+            //_currentIngredients.Add(ingredients[index]);
+            //find a way to fix this
             Debug.Log(string.Format("{0}", ingredients[index]));
-            //_currentIngredients.Add(string.Format("{0}", ingredients[index]));
+        
             _currentNumberOfIngredients += 1;
             Debug.Log(_currentNumberOfIngredients);
         }
@@ -62,16 +62,15 @@ public class HallucinationGas : MonoBehaviour
         }
         
     }
-    public void SelectItem() // to be called on button click event checking if image clicked matches the correct next item in the list 
+    public void AddToList(GameObject word)
     {
-        
-        //might end up being game objects rather than buttons 
-
+        ongoingList.Add(word.GetComponent<HGIngredient>().ingredientName);
+        //need to add if incorrect word added them run OnWrongClick
     }
-    public void ShowList() // take generated list and show it on screen for a period of time
+    
+    public void ShowList() //take generated list and show it on screen for a period of time
     {
         ingredientList.text = string.Format("{0}", _currentIngredients);
-        Debug.Log(string.Format("{0}", _currentIngredients));
         listImage.SetActive(true);
         
     }
@@ -84,7 +83,13 @@ public class HallucinationGas : MonoBehaviour
 
     public void OnListComplete()
     {
-
+        if (ongoingList.Count == 5)
+        {
+            if (_currentIngredients == ongoingList)
+            {
+                Success();
+            }
+        }
     }
     public void OnWrongClick()
     {
@@ -92,22 +97,12 @@ public class HallucinationGas : MonoBehaviour
         hallucinationGasScreen.SetActive(false);
  
     }
-    public void OnRightClick()
+    public void Success()
     {
-
+        GetComponent<GameController>().HallucinationGasMiniGameSuccess();
+        hallucinationGasScreen.SetActive(false);
     }
-    public void CheckClick()//checks if correct click or not 
-    {
-
-        //if incorrect then 
-        OnWrongClick();
-
-        //if correct then 
-        OnRightClick();
-
-
-      
-    }
+    
 
     
 }
