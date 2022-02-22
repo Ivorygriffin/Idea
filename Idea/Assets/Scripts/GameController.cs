@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameController : MonoBehaviour
 
     //floats
     private float _currentConvinced;
-    private float _currentSuspicion;
+    public float _currentSuspicion;
 
     public float maxConvinced;
     public float maxSuspicion;
@@ -53,7 +54,7 @@ public class GameController : MonoBehaviour
     //game objects 
     public GameObject pauseMenu;
     public GameObject journal;
-
+   
     //images
 
     public Image journalCharacter1; 
@@ -158,20 +159,25 @@ public class GameController : MonoBehaviour
     {
         _currentConvinced += _hallucinaitonGasMiniGameWinConvinced;
         Debug.Log(_currentConvinced);
+
     }
     public void StoryTellingMiniGameSuccess()
     {
         _currentConvinced += _storyTellingMiniGameWinConvinced;
         Debug.Log(_currentConvinced);
+      
     }
     public void ScrambleMiniGameSuccess()
     {
         _currentConvinced += _scrambleMiniGameWinConvinced;
         Debug.Log(_currentConvinced);
+
     }
     public void MiniGameFail()//will + a float in relation to max value of suspicion 
     {
         _currentSuspicion += 15;
+        Debug.Log(_currentSuspicion);
+  
     }
 
 
@@ -284,6 +290,10 @@ public class GameController : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
+
+    
+
+  
 
 
 }
