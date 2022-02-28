@@ -61,7 +61,8 @@ public class GameController : MonoBehaviour
     public Image journalCharacter2; 
     public Image journalCharacter3;
 
-
+    public GameObject[] people;
+    private GameObject _selectedPerson;
 
     void Start()
     {
@@ -148,6 +149,11 @@ public class GameController : MonoBehaviour
         _hallucinaitonGasMiniGameWinConvinced = Random.Range(1, 15);
 
         SetJournal();
+
+        _selectedPerson = people[Random.Range(0, people.Length)];
+        _selectedPerson.SetActive(true);
+
+
 
         //Randomly select model and play relevant animation 
         //pick corresponding journal character image 
