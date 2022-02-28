@@ -11,6 +11,7 @@ public class HallucinationGas : MonoBehaviour
    
     private bool _listShowing;
     private bool _run;
+    private bool _hasRun;
 
     //GameObjects
 
@@ -74,18 +75,13 @@ public class HallucinationGas : MonoBehaviour
             _listShowing = false;
             
         }
-       
 
     }
     public void AddToList(GameObject word)
     {
         ongoingList.Add(word.GetComponent<HGIngredient>().ingredientName);
-        //need to add if incorrect word added them run OnWrongClick
-        //if (_currentIngredients[_currentNumberOfIngredients] != _ingredientsString)
-        //{
-            //OnWrongClick();
-       // }
-        //this didnt work
+        ConvertList();
+      
     }
     
     public void ShowList() //take generated list and show it on screen for a period of time
@@ -113,10 +109,9 @@ public class HallucinationGas : MonoBehaviour
         listImage.SetActive(false);
         _listShowing = false;
     }
-
-    public void OnListComplete()
+    public void ConvertList()
     {
-        if (ongoingList.Count == 5)
+        if(ongoingList.Count == 5)
         {
             for (int i = 0; i < ongoingList.Count; i++)
             {
@@ -125,13 +120,24 @@ public class HallucinationGas : MonoBehaviour
                 Debug.Log(_ongoingString);
                 Debug.Log(_ingredientsString);
             }
-            //add bool
-            if (_ingredientsString == _ongoingString)
+
+        }
+
+    }
+    public void OnListComplete()
+    {
+        if (ongoingList.Count == 5)
+        {
+           
+            if (_ingredientsString == _ongoingString && _hasRun == false)
             {
+                _hasRun = true;
                 Success();
+
             }
-            if(_ingredientsString != _ongoingString)
+            if(_ingredientsString != _ongoingString && _hasRun == false)
             {
+                _hasRun = true;
                 OnWrongClick();
             }
         }
@@ -149,9 +155,9 @@ public class HallucinationGas : MonoBehaviour
     }
     public void Success()
     {
+        ClearLists();
         Debug.Log("correct");
         GC.HallucinationGasMiniGameSuccess();
-        ClearLists();
         OnSuccess.Invoke();
         hallucinationGasScreen.SetActive(false);
     }

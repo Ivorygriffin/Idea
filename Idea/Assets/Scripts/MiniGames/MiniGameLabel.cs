@@ -24,10 +24,12 @@ public class MiniGameLabel : MonoBehaviour
         {
             ST.SetActive(true);
             this.gameObject.SetActive(false);
+            DoThing.Invoke();
         }
         if (GetComponent<MiniGameLabel>().MiniGameName == "scramble")
         {
             Scram.SetActive(true);
+            DoThing.Invoke();
             this.gameObject.SetActive(false);
         }
     }
