@@ -23,8 +23,9 @@ public class MiniGameLabel : MonoBehaviour
         if (GetComponent<MiniGameLabel>().MiniGameName == "storyTelling")
         {
             ST.SetActive(true);
-            this.gameObject.SetActive(false);
             DoThing.Invoke();
+            this.gameObject.SetActive(false);
+           
         }
         if (GetComponent<MiniGameLabel>().MiniGameName == "scramble")
         {
