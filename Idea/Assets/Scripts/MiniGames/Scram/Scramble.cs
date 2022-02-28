@@ -115,7 +115,7 @@ public class Scramble : MonoBehaviour
             Clear();
             GC.ScrambleMiniGameSuccess();
         }
-        if(wordCheck != _currentWord)
+        if (wordCheck != _currentWord)
         {
             Clear();
             GC.MiniGameFail();
@@ -132,7 +132,7 @@ public class Scramble : MonoBehaviour
     public void Clear()
     {
         wordCheck = string.Empty;
-        word.text=string.Empty;
+        _scrambleString = string.Empty; 
         numLetters = 0;
         scrambledWord.Clear();
         lettersClicked.Clear();

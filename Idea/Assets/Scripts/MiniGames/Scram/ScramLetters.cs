@@ -13,7 +13,7 @@ public class ScramLetters : MonoBehaviour
     public void OnButtonClicked()
     {
         scram.LetterClick(gameObject);
-        Debug.Log("CLICKED");
+     
     }
    
 
