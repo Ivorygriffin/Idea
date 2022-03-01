@@ -79,6 +79,7 @@ public class GameController : MonoBehaviour
         SetSuspicion();
         PauseMenu();
         CheckRound();
+        CheckTime();
         
     }
     public void StartGame()
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour
 
     public void CheckRound()
     {
-        if (_currentRound == maxRound)
+        if (_currentRound == maxRound && _currentSuspicion != maxSuspicion)
         {
             WinScene();
         }
@@ -134,7 +135,7 @@ public class GameController : MonoBehaviour
     }
     public void CheckTime()
     {
-        if(_timeRemaining == 0)
+        if(_timeRemaining <= 0)
         {
             TimerComplete();
             NewCharacter();

@@ -16,10 +16,14 @@ public class StoryTelling : MonoBehaviour
     private bool _run, _textShown;
     public GameController GC;
     public int paragraphLength;
+    public StoryTellingLabels labels;
+
+    public List<string> currentItemList;
+    public string currentItemString;
     void Start()
     {
-       GC = FindObjectOfType<GameController>();
-      
+      FindObjectOfType<GameController>();
+      FindObjectOfType<StoryTellingLabels>();
     }
 
     void Update()
@@ -76,7 +80,7 @@ public class StoryTelling : MonoBehaviour
             _textShown = true;
         }
        
-        //only showing one sentence
+        
     }
 
 
@@ -101,8 +105,9 @@ public class StoryTelling : MonoBehaviour
     }
 
    
-    public void AddStoryItem()
+    public void AddStoryItem(GameObject item)
     {
-
+        currentItemList.Add(item.GetComponent<StoryTellingLabels>().item);
+        Debug.Log(item);
     }
 }
