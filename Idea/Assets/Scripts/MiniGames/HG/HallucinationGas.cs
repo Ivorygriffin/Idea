@@ -168,6 +168,7 @@ public class HallucinationGas : MonoBehaviour
         _currentIngredients.Clear();
         _ingredientsString = string.Empty;
         _run = false;
+        _hasRun = false;
     }
 
     
