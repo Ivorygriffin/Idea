@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 132913772}
   - component: {fileID: 132913775}
   m_Layer: 0
-  m_Name: Cube (6)
+  m_Name: Havoc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,8 +1461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 7
+  ST: {fileID: 445880460}
+  item: 'It is time to unleash havoc on the city '
 --- !u!1 &157351520
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 166313454}
   - component: {fileID: 166313457}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1666,8 +1666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 3
+  ST: {fileID: 445880460}
+  item: 'The city is dying from the poison within '
 --- !u!1 &177785823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,7 +3379,7 @@ GameObject:
   - component: {fileID: 414687662}
   - component: {fileID: 414687665}
   m_Layer: 0
-  m_Name: Cube (7)
+  m_Name: Flames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3473,8 +3473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 8
+  ST: {fileID: 445880460}
+  item: ' The city must be set alight with the flames of rebellion '
 --- !u!1 &430632351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,20 +3740,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - 'Hi how are you '
-  - 'I am going to go insane '
-  - 'Wow this is crazy '
-  - 'I cannot believe this '
-  - 'What is going on here '
-  - 'Typical humans '
-  - 'Where should I be going '
-  - 'My goodness I do not understand '
+  - 'The city is dying from the poison within '
+  - 'A hero of the city emerges from the shadows '
+  - 'The emerald tower must be destroyed before the city falls apart '
+  - 'The King must suffer for all the suffering he has caused '
+  - 'The whole city is either corrupt or brainwashed '
+  - 'All of emerald city will perish if action is not taken '
+  - 'It is time to unleash havoc on the city '
+  - ' The city must be set alight with the flames of rebellion '
   _sentencesList: []
   displayedText: {fileID: 722770968}
   _ongoingParagraph: []
   finalParagraph: 
   GC: {fileID: 0}
   paragraphLength: 4
+  labels: {fileID: 0}
+  currentItemList: []
+  currentItemString: 
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1847320730}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1877102115}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1630876127}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 682539753}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &458635951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,7 +3956,7 @@ GameObject:
   - component: {fileID: 473581364}
   - component: {fileID: 473581367}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Perish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3996,8 +4050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 6
+  ST: {fileID: 445880460}
+  item: 'All of emerald city will perish if action is not taken '
 --- !u!1 &489774737
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,7 +5799,7 @@ GameObject:
   - component: {fileID: 700493240}
   - component: {fileID: 700493243}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5839,8 +5893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 2
+  ST: {fileID: 445880460}
+  item: 'The emerald tower must be destroyed before the city falls apart '
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6694,7 +6748,7 @@ GameObject:
   - component: {fileID: 766045866}
   - component: {fileID: 766045869}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Suffer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6788,8 +6842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 4
+  ST: {fileID: 445880460}
+  item: 'The King must suffer for all the suffering he has caused '
 --- !u!1 &779633805
 GameObject:
   m_ObjectHideFlags: 0
@@ -11562,7 +11616,7 @@ GameObject:
   - component: {fileID: 1503252010}
   - component: {fileID: 1503252013}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Hero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11656,8 +11710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 1
+  ST: {fileID: 445880460}
+  item: 'A hero of the city emerges from the shadows '
 --- !u!1 &1534623897
 GameObject:
   m_ObjectHideFlags: 0
@@ -13827,7 +13881,7 @@ GameObject:
   - component: {fileID: 1938531802}
   - component: {fileID: 1938531805}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Corrupt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13921,8 +13975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbaa006f4ed65a4aadf4d8138be0a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ST: {fileID: 445880462}
-  item: 5
+  ST: {fileID: 445880460}
+  item: 'The whole city is either corrupt or brainwashed '
 --- !u!1 &1939637480
 GameObject:
   m_ObjectHideFlags: 0

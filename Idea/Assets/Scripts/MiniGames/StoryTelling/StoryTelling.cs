@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class StoryTelling : MonoBehaviour
 {
@@ -20,9 +21,11 @@ public class StoryTelling : MonoBehaviour
 
     public List<string> currentItemList;
     public string currentItemString;
+    private int _currentItemNum;
+    public UnityEvent OnComplete;
     void Start()
     {
-      FindObjectOfType<GameController>();
+      GC = FindObjectOfType<GameController>();
       FindObjectOfType<StoryTellingLabels>();
     }
 
@@ -86,11 +89,32 @@ public class StoryTelling : MonoBehaviour
 
     public void CheckResult()
     {
-
+        if(currentItemString == finalParagraph)
+        {
+            Clear();
+            OnComplete.Invoke();
+            Success();
+        }
+        if(currentItemString != finalParagraph)
+        {
+            Clear();
+            OnComplete.Invoke();
+            Lose();
+        }
     }
 
     public void Clear()
     {
+        currentItemString = string.Empty;
+        _currentItemNum = 0;
+        _currentSentenceNum = 0;
+        _randomSentence = string.Empty;
+        _sentencesList.Clear();
+        currentItemList.Clear();
+        finalParagraph = string.Empty;
+        _ongoingParagraph.Clear();
+        _run = false;
+        _textShown=false;
 
     }
 
@@ -108,6 +132,19 @@ public class StoryTelling : MonoBehaviour
     public void AddStoryItem(GameObject item)
     {
         currentItemList.Add(item.GetComponent<StoryTellingLabels>().item);
+        _currentItemNum += 1;
         Debug.Log(item);
+
+        if (_currentItemNum == paragraphLength)
+        {
+            for (int i = 0; i < currentItemList.Count; i++)
+            {
+                string par = currentItemList[i];
+                currentItemString += currentItemList[i];
+                Debug.Log(currentItemString);
+            
+            }
+            CheckResult();
+        }
     }
 }
