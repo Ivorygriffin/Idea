@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class StoryTellingLabels : MonoBehaviour
 {
-    public StoryTelling ST;
+    public GameObject ST;
     public string item;
 
 
-    void Start()
-    {
-        ST = FindObjectOfType<StoryTelling>();
-    }
-
+    
     public void OnMouseDown()
     {
-        ST.AddStoryItem(gameObject);
+        ST.GetComponent<StoryTelling>().AddStoryItem(gameObject);
         
     }
 }
