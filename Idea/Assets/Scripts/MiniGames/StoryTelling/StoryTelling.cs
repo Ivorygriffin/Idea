@@ -105,26 +105,33 @@ public class StoryTelling : MonoBehaviour
 
     public void Clear()
     {
+        _currentSentenceNum = 0;
         currentItemString = string.Empty;
         _currentItemNum = 0;
-        _currentSentenceNum = 0;
         _randomSentence = string.Empty;
         _sentencesList.Clear();
         currentItemList.Clear();
         finalParagraph = string.Empty;
         _ongoingParagraph.Clear();
-        _run = false;
         _textShown=false;
+        _run = false;
+
 
     }
 
     public void Success()
     {
+        Debug.Log("winner");
+        Clear();
+        OnComplete.Invoke();
         GC.StoryTellingMiniGameSuccess();
     }
 
     public void Lose()
     {
+        Debug.Log("LOser");
+        Clear();
+        OnComplete.Invoke();
         GC.MiniGameFail();
     }
 
