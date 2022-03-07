@@ -9318,8 +9318,8 @@ Transform:
   m_Children:
   - {fileID: 194893596}
   - {fileID: 1303413448}
-  - {fileID: 1710130356}
   - {fileID: 1875530673}
+  - {fileID: 1710130356}
   - {fileID: 177785824}
   - {fileID: 330941612}
   - {fileID: 444336371}
@@ -14448,7 +14448,7 @@ Transform:
   m_LocalScale: {x: 0.18142132, y: 0.07228805, z: 0.23196512}
   m_Children: []
   m_Father: {fileID: 1057621163}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1875530674
 MonoBehaviour:
